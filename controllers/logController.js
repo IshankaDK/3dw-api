@@ -2,7 +2,7 @@ import connection from "../database.js";
 import ip from "ip";
 
 export const allLogs = (req, res) => {
-	let q = `SELECT * FROM logs l
+	let q = `SELECT l.log_id, u.user_id, u.user_name, l.event_name, l.event_time, l.ip_address FROM logs l
     left join users u on (l.user_id = u.user_id)`;
 
 	connection.query(q, (err, result) => {
