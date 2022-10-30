@@ -18,6 +18,7 @@ import {
 	deleteSessions,
 	currentGroups,
 	deleteAllSessions,
+	usersCount,
 } from "../controllers/userController.js";
 import { jwtVerify } from "../middlewares/jwtVerify.js";
 import { sessionVerify } from "../middlewares/sessionVerify.js";
@@ -49,6 +50,7 @@ router.get("/lastVisitors", lastVisitors);//called
 router.get("/lastRegisteredUsers", lastRegisteredUsers);//called
 router.delete("/deleteInactiveUsers", deleteInactiveUsers);
 router.get("/usersTable", usersTable);//called
+router.get("/usersCount", usersCount);//called
 router.get("/userData/:user_id", userData);
 router.put("/updateUser", updateUser);
 router.get("/usersAwaitingActivation", usersAwaitingActivation);

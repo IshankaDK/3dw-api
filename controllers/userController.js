@@ -234,6 +234,20 @@ export const usersTable = (req, res) => {
 	});
 };
 
+export const usersCount = (req, res) => {
+	let q = `SELECT COUNT(user_id) AS userCount FROM users`;
+
+	connection.query(q, (err, result) => {
+		if (err) {
+			res.send({
+				error: err,
+			});
+		} else {
+			res.send(result);
+		}
+	});
+};
+
 export const userData = (req, res) => {
 	let q = `SELECT user_id, user_name, first_name, last_name, status, email, created_date, last_login, created_ip, last_active_ip
 	FROM users WHERE user_name = ? OR user_id = ?`;
