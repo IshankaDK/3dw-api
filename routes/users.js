@@ -43,7 +43,7 @@ router.use(isAdmin);
 
 // Only admin can access
 
-router.post("/newUser", newUser);
+router.post("/newUser", newUser);//called
 router.get("/onlineUsers", onlineUsers);//called
 router.get("/newUsersSinceLastVisit", newUsersSinceLastVisit);
 router.get("/lastVisitors", lastVisitors);//called
@@ -51,7 +51,7 @@ router.get("/lastRegisteredUsers", lastRegisteredUsers);//called
 router.delete("/deleteInactiveUsers", deleteInactiveUsers);
 router.get("/usersTable", usersTable);//called
 router.get("/usersCount", usersCount);//called
-router.get("/userData/:user_id", userData);
+router.get("/userData/:user_id", userData);//called
 router.put("/updateUser", updateUser);
 router.get("/usersAwaitingActivation", usersAwaitingActivation);
 router.put("/activateUser", activateUser);

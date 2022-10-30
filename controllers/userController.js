@@ -326,7 +326,7 @@ export const activateUser = (req, res) => {
 };
 
 export const currentSessions = (req, res) => {
-	let q = `SELECT user_name, last_active_ip, last_login,session_expiry_date FROM users WHERE session_expiry_date IS NOT NULL`;
+	let q = `SELECT user_id, user_name, last_active_ip, last_login,session_expiry_date FROM users WHERE session_expiry_date IS NOT NULL`;
 
 	connection.query(q, (err, result) => {
 		if (err) {
