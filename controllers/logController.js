@@ -14,6 +14,7 @@ export const allLogs = (req, res) => {
 			let obj = [];
 			result.forEach((elm) => {
 				obj.push({
+					log_id:elm.log_id,
 					user_id: elm.user_id,
 					user_name: elm.user_name,
 					event: elm.event_name,
