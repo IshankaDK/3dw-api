@@ -162,7 +162,7 @@ export const newUsersSinceLastVisit = (req, res) => {
 
 export const logout = (req, res) => {
 	let q = "UPDATE users SET session_expiry_date = NULL WHERE user_name = ?";
-	connection.query(q, [req.user_name], (err) => {
+	connection.query(q, [req.body.user_name], (err) => {
 		if (err)
 			res.send({
 				error: err,
