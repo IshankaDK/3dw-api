@@ -362,8 +362,8 @@ export const deleteAllSessions = (req, res) => {
 };
 
 export const deleteSessions = (req, res) => {
-	let users = req.body.user_names;
-	let q = `UPDATE users SET session_expiry_date = NULL WHERE user_name in ?`;
+	let users = req.body.user_id;
+	let q = `UPDATE users SET session_expiry_date = NULL WHERE user_id in ?`;
 
 	connection.query(q, [[users]], (err) => {
 		if (err) {
