@@ -249,7 +249,7 @@ export const usersCount = (req, res) => {
 };
 
 export const userData = (req, res) => {
-	let q = `SELECT user_id, user_name, first_name, last_name, status, email, created_date, last_login, created_ip, last_active_ip
+	let q = `SELECT user_id, user_name, first_name, last_name, status, email, created_date, last_login, created_ip, last_active_ip, company
 	FROM users WHERE user_name = ? OR user_id = ?`;
 	connection.query(q, [req.params.user_name, req.params.user_id], (err, result) => {
 		if (err) {
@@ -270,15 +270,15 @@ export const updateUser = (req, res) => {
 		q += ", password = ?";
 		values.push(md5(req.body.password));
 	}
-	values.push(req.body.of_user_name);
-	values.push(req.body.of_user_id);
+	values.push(req.body.user_name);
+	values.push(req.body.user_id);
 	q += " WHERE user_name = ? OR user_id = ?";
 	connection.query(q, values, (err) => {
 		if (err) res.send({ error: err });
 		else if (!pw_change) {
 			res.send("Done");
 		} else {
-			createLog(req.body.of_user_id, "PWD_CHANGED BY ADMIN", (err2) => {
+			createLog(req.body.user_id, "PWD_CHANGED BY ADMIN", (err2) => {
 				if (err2) {
 					res.send({
 						error: err2,
